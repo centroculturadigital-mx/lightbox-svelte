@@ -6,12 +6,23 @@
     export let go;
 
     let classBase = "LightBox"
-    let classList =  classBase
     
-    // let classList =  `${classBase} ${classBase}--hidden`
+    let classList = `${classBase} ${classBase}--hidden`
 
     $: contents = Array.isArray(content) ? content : [content]
 
+    $: open(go)
+
+    const open = (goIndex) => {
+        if( !! goIndex ) {
+            classList = classBase
+        }
+    }
+
+    const close = () => {
+        classList = `${classBase} ${classBase}--hidden`
+    }
+ 
 </script>
 
 
@@ -67,7 +78,7 @@
         transition: opacity 1s;
     }
 
-    .Lightbox--hidden {
+    .LightBox--hidden {
         display: none;
         opacity: 0;
     }
@@ -85,7 +96,7 @@
             
         {#each contents as content,i ("content_"+i)}
             {#if content.type=="image"|| !content.type }
-                <img src={content.url} alt={content.title}>
+                <img src={content.full} alt={content.title}>
             {/if}
         {/each}
 
