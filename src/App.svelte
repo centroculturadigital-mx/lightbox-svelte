@@ -1,9 +1,32 @@
 <script>
 
     import LightBox from "./LightBox.svelte"
+	let w;
+	let h;
 
-    let images = Array(10).fill(1).map(()=>({
-		url: "http://unsplash.it/300/"+parseInt((Math.random()*200)+200),
+	const words=[
+		"ritual",
+		"mountain",
+		"desert",
+		"world",
+		"music",
+		"textile",
+		"water",
+		"wind",
+		"cloud",
+	]
+
+	w = 300;
+	h = 200;
+    let images = Array(10).fill(1).map((e,i)=>({
+		url: `https://fakeimg.pl/${w}x${h}?text=Image-${i}`,
+		title: "Minim in sunt aliquip adipisicing excepteur non."
+	}))
+	
+	w = 800;
+	h = 600;
+    let imagesFull = Array(10).fill(1).map((e,i)=>({
+		url: `https://fakeimg.pl/${w}x${h}?text=Image-${i}`,
 		title: "Minim in sunt aliquip adipisicing excepteur non."
 	}))
 
@@ -19,4 +42,4 @@
 </ul>
 
 
-<LightBox content={images}/>
+<LightBox content={imagesFull}/>

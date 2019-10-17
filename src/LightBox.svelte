@@ -26,19 +26,29 @@
         height: 100vh;
     }
     
-    .LightBox :global(.carousel),
-    .LightBox :global(.slides) {
+    .LightBox :global(.carousel)
+    /* ,
+    .LightBox :global(.slides)  */
+    {
         width: 100vw;
         height: 100vh;
     }
     .LightBox :global(.slides > * > *) {
 
-        width: 100vw !important;
-        height: 100vh !important;
+        /* width: 100vw !important;
+        height: 70vh !important; */
+        height: 100vh;
         display: flex;
         align-items: center;
         justify-content: center;
 
+    }
+    .LightBox :global(.carousel > ul) {
+        bottom: 0;
+    }
+
+    .LightBox :global(.carousel img) {
+        object-fit: contain;
     }
 
     .Lightbox__Overlay {
@@ -69,7 +79,7 @@
 <div class={classList}>
 
     <div class="Lightbox__Overlay"></div>
-    <Carousel>
+    <Carousel perPage={({perParge:1})}>
             
         {#each contents as content,i ("content_"+i)}
             {#if content.type=="image"|| !content.type }
