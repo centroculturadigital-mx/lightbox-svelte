@@ -1,6 +1,7 @@
 <script>
 
     import Carousel from "@centroculturadigital-mx/svelte-carousel";
+    import { onMount } from "svelte";
 
     export let content;
     export let go;
@@ -8,18 +9,25 @@
     let classBase = "LightBox"
     
     let classList = `${classBase} ${classBase}--hidden`
+    
+    let shouldOpen = false
 
     $: contents = Array.isArray(content) ? content : [content]
 
     $: open(go)
 
+    onMount(()=>{
+        shouldOpen = true    
+    })
+
     const open = (goIndex) => {
-        if( !! goIndex ) {
+        if(( goIndex === 0 || goIndex > 0) && shouldOpen ) {
             classList = classBase
         }
     }
 
     const close = () => {
+        go=-1
         classList = `${classBase} ${classBase}--hidden`
     }
  
@@ -37,6 +45,9 @@
         left: 0;
         width: 100vw;
         height: 100vh;
+
+        opacity: 1;
+        transition: opacity 1s;
     }
     .LightBox header {
         width: 100%;
@@ -58,8 +69,8 @@
     }
     .LightBox :global(.slides > * > *) {
 
-        /* width: 100vw !important;
-        height: 70vh !important; */
+        width: 100vw !important;
+        /* height: 70vh !important; */
         height: 100vh;
         display: flex;
         align-items: center;
@@ -84,13 +95,12 @@
         justify-content: center;
         align-items: center;
         background-color: rgba(0,0,0,0.7);
-        opacity: 1;
-        transition: opacity 1s;
+        
     }
 
     .LightBox--hidden {
-        display: none;
         opacity: 0;
+        z-index: -1;
     }
     
 
@@ -106,7 +116,7 @@
         </button>
     </header>
     
-    <div class="Lightbox__Overlay"></div>
+    <div class="Lightbox__Overlay" on:click={close}></div>
     <Carousel perPage={({perParge:1})} go={go}>
             
         {#each contents as content,i ("content_"+i)}

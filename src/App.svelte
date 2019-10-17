@@ -2,10 +2,15 @@
 
 	import LightBox from "./LightBox.svelte"
 
-	let nextContent=0
+	let go
+	
 
 	const openLightBox = (i) => {
-		nextContent = i
+		console.log("oLB");
+		
+		go = null
+		setTimeout(()=>go = i)
+		
 	}
 
 	let w = 300;
@@ -33,4 +38,4 @@
 </ul>
 
 
-<LightBox content={images} go={nextContent}/>
+<LightBox content={images} go={go}/>
