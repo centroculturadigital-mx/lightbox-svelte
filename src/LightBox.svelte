@@ -3,6 +3,8 @@
     import Carousel from "@centroculturadigital-mx/svelte-carousel";
 
     export let content;
+    export let go;
+
     let classBase = "LightBox"
     let classList =  classBase
     
@@ -79,7 +81,7 @@
 <div class={classList}>
 
     <div class="Lightbox__Overlay"></div>
-    <Carousel perPage={({perParge:1})}>
+    <Carousel perPage={({perParge:1})} go={go}>
             
         {#each contents as content,i ("content_"+i)}
             {#if content.type=="image"|| !content.type }
