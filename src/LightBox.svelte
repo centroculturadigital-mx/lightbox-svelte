@@ -27,7 +27,7 @@
     }
 
     const close = () => {
-        go=-1
+        go=null
         classList = `${classBase} ${classBase}--hidden`
     }
  
@@ -49,6 +49,7 @@
         opacity: 1;
         transition: opacity 1s;
     }
+
     .LightBox header {
         width: 100%;
         position: absolute;

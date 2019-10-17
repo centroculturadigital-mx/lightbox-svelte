@@ -6,11 +6,8 @@
 	
 
 	const openLightBox = (i) => {
-		console.log("oLB");
-		
 		go = null
 		setTimeout(()=>go = i)
-		
 	}
 
 	let w = 300;
