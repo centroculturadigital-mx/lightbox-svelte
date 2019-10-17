@@ -12,7 +12,7 @@
     "svelte": "^3.0.0"
   },
   "dependencies": {
-    "@centroculturadigital-mx/svelte-carousel": "0.5.0",
+    "@centroculturadigital-mx/svelte-carousel": "^0.5.1",
     "sirv-cli": "^0.4.4"
   },
   "scripts": {

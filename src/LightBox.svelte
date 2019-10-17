@@ -17,7 +17,21 @@
     $: open(go)
 
     onMount(()=>{
-        shouldOpen = true    
+        shouldOpen = true
+        
+         
+        
+        
+        document.addEventListener('keydown', event => {
+
+            switch(event.keyCode) {
+                case 27:
+                    close();
+                    break;
+            }
+            
+        });
+
     })
 
     const open = (goIndex) => {
