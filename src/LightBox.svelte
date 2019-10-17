@@ -38,6 +38,16 @@
         width: 100vw;
         height: 100vh;
     }
+    .LightBox header {
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
     
     .LightBox :global(.carousel)
     /* ,
@@ -90,7 +100,12 @@
 
 
 <div class={classList}>
-
+    <header>
+        <button on:click={close}>
+            Close
+        </button>
+    </header>
+    
     <div class="Lightbox__Overlay"></div>
     <Carousel perPage={({perParge:1})} go={go}>
             
